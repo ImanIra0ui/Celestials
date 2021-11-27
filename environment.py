@@ -2,6 +2,7 @@
 
 import numpy as np
 import pygame as pg
+from sys import exit
 
 class Planet():
     
