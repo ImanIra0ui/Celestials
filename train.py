@@ -72,6 +72,44 @@ class Route ():
                 else:
                     self.dna.pop(prevIndex + 1)
                     
+#Initializing needed variables
+populationSize = 50
+#chance that a bot is a completely new one
+mutationRate = 0.1
+#number of bots that are selected from each generation
+nSelected = 5 
+
+env = Environment()
+#getting the length of the path depending on the input
+dnaLength = len(env.planets)
+population = list()
+
+#First population
+for i in range(populationSize):
+    agent = Route(dnaLength)    
+    population.append(agent)
+
+#keeps track of the number of generations
+generation = 0
+#initializing the optimal distance to infinity
+bestDist = np.inf
+
+#iterate for an undetermined duration
+#to ensure the best path is found
+while (True):
+    generation += 1
+    
+    for agent in population:
+        env.reset()
         
+        for i in range(dnaLength):
+            #determining next planet
+            action = agent.dna[i]
+            
+            
+            
+    
+
+    
         
                 
