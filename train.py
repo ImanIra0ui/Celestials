@@ -160,7 +160,7 @@ while (True):
         action = sortedPopulation[0].dna[i]
         _ = env.step(action, "normal")
     
-    if generation % 100 == 0:
+    if generation % 500 == 0:
         env.reset()
     
         for i in range(dnaLength):
@@ -168,7 +168,7 @@ while (True):
             #display the rocket
             _ = env.step(action, "beautiful")
         
-    print('Generation: ' + str(generation) + ' Shortest distance: {:.2f}' + format(bestDist) + ' light years')
+    print('Generation: ' + str(generation) + ' Shortest distance: {:.2f}'.format(bestDist) + ' light years')
         
             
     
