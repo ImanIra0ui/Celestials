@@ -2,7 +2,7 @@
 
 #Importing the libraries
 import numpy as np
-from environemnt import Environment
+from environment import Environment
 
 #Defining the bots
 #DNA: route sequence
@@ -11,7 +11,7 @@ from environemnt import Environment
 class Route ():
     
     def __init__(self, dnaLength):
-        self.dnaLenghth = dnaLength
+        self.dnaLength = dnaLength
         self.dna = list()
         self.distance = 0
         
@@ -97,6 +97,7 @@ bestDist = np.inf
 #iterate for an undetermined duration
 #to ensure the best path is found
 while (True):
+    #increasing generation when we iterate
     generation += 1
     
     for agent in population:
@@ -106,7 +107,69 @@ while (True):
             #determining next planet
             action = agent.dna[i]
             
+            #not interested in seeing every single bot so view is none
+            agent.distance += env.step(action, 'none') #distance travelled to reach a planet
             
+    #sorting the population based on the distance descendeing order
+    sortedPopulation = sorted(population, key = lambda x: x.distance)
+    population.clear()
+     
+     #modify the minimum distance if a more optimal one is found
+    if sortedPopulation[0].distance < bestDist:
+        bestDist = sortedPopulation[0].distance
+     
+    #adding the best bots to the new population
+    #to preserve their genes and even if we have a crossover
+    #with worse results we do not lose the best ones     
+    for i in range(nSelected):
+         best = sortedPopulation[i]
+         #distance travelled by the bot is reset to 0
+         best.distance = 0
+         #appending the best bots to the new population
+         population.append(best)
+        
+    #filling the rest of the population
+    #subtracting the number of bots we added
+    left = populationSize - nSelected
+    
+    for i in range(left):
+        agent = Route(dnaLength)
+        
+        #deciding if it is a mutant or offspring
+        if np.random.rand() <= mutationRate:
+            population.append(agent)
+        else:
+            #cross the best bots 
+            index1 = np.random.randint(0, nSelected)
+            index2 = np.random.randint(0, nSelected)
+            
+            while index1==index2:
+                index2 = np.random.randint(0, nSelected)
+         
+            dna1 = sortedPopulation[index1].dna
+            dna2 = sortedPopulation[index2].dna
+            
+            agent.cross(dna1, dna2)
+            
+            population.append(agent)
+     
+    #displaying the results
+    env.reset()
+    
+    for i in range(dnaLength):
+        action = sortedPopulation[0].dna[i]
+        _ = env.step(action, "normal")
+    
+    if generation % 100 == 0:
+        env.reset()
+    
+        for i in range(dnaLength):
+            action = sortedPopulation[0].dna[i]
+            #display the rocket
+            _ = env.step(action, "beautiful")
+        
+    print('Generation: ' + str(generation) + ' Shortest distance: {:.2f}' + format(bestDist) + ' light years')
+        
             
     
 
