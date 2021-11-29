@@ -92,7 +92,8 @@ class Environment():
         spriteRect.center = rotSprite.get_rect().center
         
         rotSprite = rotSprite.subsurface(spriteRect)
-        
+
+
         return rotSprite
     
     def step(self, action, view):
