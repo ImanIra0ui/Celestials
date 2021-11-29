@@ -8,10 +8,10 @@ Celestials is an AI based game designed to solve the famous travelling salesman 
 Python version used: 3.6
 
 **Input**:  
-<img src="https://user-images.githubusercontent.com/48844695/143930183-fdb00c01-c24b-4c1a-a3f6-d93fc0c3d1c3.png" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/48844695/143930183-fdb00c01-c24b-4c1a-a3f6-d93fc0c3d1c3.png" width=40% height=40%>
 
 **Searching**:  
-![image](https://user-images.githubusercontent.com/48844695/143930225-3725e036-2ad3-4957-9c5b-eed54a6544f6.png =250x250)
+<img src="https://user-images.githubusercontent.com/48844695/143930225-3725e036-2ad3-4957-9c5b-eed54a6544f6.png" width=40% height=40%>
 
 **Solution found**:  
-![image](https://user-images.githubusercontent.com/48844695/143930290-7a4aa7d0-8d91-4d22-b541-f9aeba751566.png =250x250)
+<img src="https://user-images.githubusercontent.com/48844695/143930290-7a4aa7d0-8d91-4d22-b541-f9aeba751566.png" width=40% height=40%>
