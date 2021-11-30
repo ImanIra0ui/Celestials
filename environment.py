@@ -1,4 +1,4 @@
-#Space Discover: Genetic Algorithms - Environment File 
+#Environment File 
 
 import numpy as np
 import pygame as pg
